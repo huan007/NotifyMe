@@ -1,5 +1,8 @@
 package com.huannguyen.notifyme;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Huan Nguyen on 8/6/2017.
  * Represent a single user in the app. Contains user's information
@@ -47,5 +50,15 @@ class User {
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    //Implemented using template provided by Firebase Official Tutorial
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("username", userName);
+        result.put("email", email);
+        result.put("usertype", userType);
+
+        return result;
     }
 }
