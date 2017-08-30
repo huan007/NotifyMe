@@ -11,6 +11,7 @@ import java.util.Map;
 class User {
     String userName;
     String email;
+    String UID;
     UserType userType;
 
     public User()
@@ -52,11 +53,16 @@ class User {
         this.userType = userType;
     }
 
+    public String getUID() { return UID; }
+
+    public void setUID(String UID) { this.UID = UID; }
+
     //Implemented using template provided by Firebase Official Tutorial
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("username", userName);
         result.put("email", email);
+        result.put("UID", UID);
         result.put("usertype", userType);
 
         return result;
