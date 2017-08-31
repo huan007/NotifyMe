@@ -21,10 +21,11 @@ class User {
         userType = UserType.GUEST;
     }
 
-    public User(String userName, String email, UserType userType)
+    public User(String userName, String email, String UID, UserType userType)
     {
         this.userName = userName;
         this.email = email;
+        this.UID = UID;
         this.userType = userType;
     }
 
