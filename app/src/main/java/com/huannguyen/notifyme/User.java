@@ -8,7 +8,7 @@ import java.util.Map;
  * Represent a single user in the app. Contains user's information
  */
 
-class User {
+class User{
     String userName;
     String email;
     String UID;
@@ -67,5 +67,29 @@ class User {
         result.put("usertype", userType);
 
         return result;
+    }
+
+    @Override
+    public boolean equals(Object object)
+    {
+        //Check whether the object is a User object
+        User userObject;
+        if (object instanceof User)
+            //casting object into User object
+            userObject = (User) object;
+        else
+            return false;
+
+        //Compare users' info
+        if (this.userName != userObject.userName)
+            return false;
+        else if (this.email != userObject.email)
+            return false;
+        else if (this.UID != userObject.UID)
+            return false;
+        else if (this.userType != userObject.userType)
+            return false;
+        else
+            return true;
     }
 }
