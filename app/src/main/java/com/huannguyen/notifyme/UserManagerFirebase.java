@@ -36,10 +36,12 @@ public class UserManagerFirebase implements UserManagerInterface {
         DatabaseReference userRef = rootRef.child("User/" + userID);
 
         final User[] user = new User[1];
+        final boolean[] result = new boolean[1];
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 user[0] = dataSnapshot.getValue(User.class);
+                result[0] = true;
             }
 
             @Override
@@ -48,14 +50,23 @@ public class UserManagerFirebase implements UserManagerInterface {
             }
         };
 
+
         userRef.addListenerForSingleValueEvent(userListener);
+
+        /*Here I used while loop to wait until value is retrieved. Possibly infinite loop
+         *if there are no internet connection*/
+        while (result[0] == false)
+        {
+
+        }
         return user[0];
     }
 
     @Override
     public boolean checkUserExist(String userID) {
         //Delegate responsibility to retreiveUser. If null then user doesn't exist.
-        if (retrieveUser(userID) != null)
+        User returnedUser = retrieveUser(userID);
+        if (returnedUser != null)
             return true;
         else
             return false;
