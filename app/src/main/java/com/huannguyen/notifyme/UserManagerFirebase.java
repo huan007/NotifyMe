@@ -26,14 +26,14 @@ public class UserManagerFirebase implements UserManagerInterface {
         //(FUTURE) Maybe add Security Measure?
 
         //Write new user into database
-        rootRef.child("User/" + userID).setValue(newUser);
+        rootRef.child("Users/" + userID).setValue(newUser);
     }
 
     @Override
     public User retrieveUser(String userID) {
         //Get root reference
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userRef = rootRef.child("User/" + userID);
+        DatabaseReference userRef = rootRef.child("Users/" + userID);
 
         final User[] user = new User[1];
         final boolean[] result = new boolean[1];
