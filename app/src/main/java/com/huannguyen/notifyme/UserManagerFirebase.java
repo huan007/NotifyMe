@@ -10,6 +10,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by Huan Nguyen on 8/28/2017.
  */
@@ -36,12 +38,10 @@ public class UserManagerFirebase implements UserManagerInterface {
         DatabaseReference userRef = rootRef.child("Users/" + userID);
 
         final User[] user = new User[1];
-        final boolean[] result = new boolean[1];
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 user[0] = dataSnapshot.getValue(User.class);
-                result[0] = true;
             }
 
             @Override
@@ -55,9 +55,10 @@ public class UserManagerFirebase implements UserManagerInterface {
 
         /*Here I used while loop to wait until value is retrieved. Possibly infinite loop
          *if there are no internet connection*/
-        while (result[0] == false)
-        {
-
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return user[0];
     }
@@ -65,10 +66,30 @@ public class UserManagerFirebase implements UserManagerInterface {
     @Override
     public boolean checkUserExist(String userID) {
         //Delegate responsibility to retreiveUser. If null then user doesn't exist.
-        User returnedUser = retrieveUser(userID);
-        if (returnedUser != null)
-            return true;
-        else
-            return false;
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef = rootRef.child("Users/" + userID);
+
+        final boolean[] result = new boolean[1];
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                    result[0] = true;
+                else
+                    result[0] = false;
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d(TAG, databaseError.toString());
+            }
+        });
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return result[0];
     }
 }
