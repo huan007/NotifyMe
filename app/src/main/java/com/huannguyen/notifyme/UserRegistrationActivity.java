@@ -9,14 +9,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class UserRegistrationActivity extends AppCompatActivity {
-    private static final String TAG = "UserRegistrationActivity";
+    private static final String TAG = "RegistrationActivity";
     private static FirebaseUser currUser;
     private static UserManagerInterface userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_registration);
 
         //Get currUser and UserManager (Using Firebase for now)
         currUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -27,7 +27,18 @@ public class UserRegistrationActivity extends AppCompatActivity {
         //Log.d(TAG, "UID: " + currUser.getUid());
 
         //Skip Activity when the user is already exist
-        startNextActivity();
+        if (userManager.checkUserExist(currUser.getUid()) == true)
+        {
+            Log.d(TAG, "User is Already Registered!");
+            User userProfile = userManager.retrieveUser(currUser.getUid());
+            if (userProfile.getUserType() == UserType.HOST)
+                startHostActivity();
+            else
+                startGuestActivity();
+        }
+
+        else
+            Log.d(TAG, "User is Not Registered");
     }
 
     public void onClickHost(View view)
@@ -35,7 +46,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         User newUser = new User(currUser.getDisplayName(), currUser.getEmail(), currUser.getUid(),
                 UserType.HOST);
         userManager.registerUser(newUser);
-        startNextActivity();
+        startHostActivity();
     }
 
     public void onClickGuest(View view)
@@ -43,10 +54,15 @@ public class UserRegistrationActivity extends AppCompatActivity {
         User newUser = new User(currUser.getDisplayName(), currUser.getEmail(), currUser.getUid(),
                 UserType.GUEST);
         userManager.registerUser(newUser);
-        startNextActivity();
+        startGuestActivity();
     }
 
-    public void startNextActivity()
+    public void startHostActivity()
+    {
+
+    }
+
+    public void startGuestActivity()
     {
 
     }

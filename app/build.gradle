@@ -10,7 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled=true
+        multiDexEnabled = true
     }
     buildTypes {
         release {
@@ -32,6 +32,8 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:11.0.2'
     testCompile 'junit:junit:4.12'
 }
+
+
 
 
 
