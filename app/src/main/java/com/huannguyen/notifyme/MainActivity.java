@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //OnCreate, check whether the user is already exist
-        FirebaseUser currUser = FirebaseAuth.getInstance().getCurrentUser();
-        Log.d(TAG, "UID: " + currUser.getUid());
+        //FirebaseUser currUser = FirebaseAuth.getInstance().getCurrentUser();
+        //Log.d(TAG, "UID: " + currUser.getUid());
 
     }
 
