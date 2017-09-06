@@ -1,5 +1,6 @@
 package com.huannguyen.notifyme;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,11 +60,14 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
     public void startHostActivity()
     {
-
+        Intent hostIntent = new Intent(this, HostMainActivity.class);
+        hostIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(hostIntent);
     }
 
-    public void startGuestActivity()
-    {
-
+    public void startGuestActivity() {
+        Intent guestIntent = new Intent(this, GuestMainActivity.class);
+        guestIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(guestIntent);
     }
 }
