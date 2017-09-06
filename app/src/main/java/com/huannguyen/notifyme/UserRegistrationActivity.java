@@ -8,8 +8,8 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+public class UserRegistrationActivity extends AppCompatActivity {
+    private static final String TAG = "UserRegistrationActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
