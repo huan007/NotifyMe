@@ -86,6 +86,12 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             GoogleSignInAccount account = result.getSignInAccount();
             firebaseAuthWithGoogle(account);
 
+            //Wait until we get an actual user from Google Authentication
+            while (FirebaseAuth.getInstance().getCurrentUser() == null)
+            {
+                //Empty block to wait
+            }
+
             //Exit SignIn Activity, proceed to Main Activity
             Intent activityIntent = new Intent(this, MainActivity.class);
             activityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
