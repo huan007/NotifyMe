@@ -4,14 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.huannguyen.notifyme.SignInActivity"
+    android:background="#ce5044"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
-    
+    android:weightSum="1"
+    tools:context="com.huannguyen.notifyme.SignInActivity">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get started by signing in to Google"
+        android:textSize="12dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:layout_marginTop="200dp"/>
+
     <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/signInButton"
-        android:layout_gravity="center"/>
-
+        android:layout_marginTop="10dp"/>
 </LinearLayout>
