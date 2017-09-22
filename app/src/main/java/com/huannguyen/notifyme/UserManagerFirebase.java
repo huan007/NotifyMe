@@ -26,6 +26,7 @@ public class UserManagerFirebase implements UserManagerInterface {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         //(FUTURE) Maybe add Security Measure?
+        Log.d(TAG, "UID: "  + userID);
 
         //Write new user into database
         rootRef.child("Users/" + userID).setValue(newUser);

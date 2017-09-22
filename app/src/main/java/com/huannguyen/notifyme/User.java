@@ -9,10 +9,10 @@ import java.util.Map;
  */
 
 class User{
-    String userName;
-    String email;
-    String UID;
-    UserType userType;
+    private String userName;
+    private String email;
+    private String UID;
+    private UserType userType;
 
     public User()
     {
