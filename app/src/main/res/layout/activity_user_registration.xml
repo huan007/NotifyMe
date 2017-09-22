@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ce5044"
+    android:background="#0277BD"
     android:gravity="center"
     android:orientation="vertical"
     tools:context="com.huannguyen.notifyme.UserRegistrationActivity"
@@ -23,25 +23,28 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose if you are..."
+        android:text="We need to know if you are a..."
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
-        android:textSize="10dp" />
+        android:textSize="15dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:layout_weight="0.72"
+        android:layout_height="243dp"
+        android:layout_marginBottom="-115dp"
+        android:layout_marginTop="120dp"
+        android:layout_weight="0.10"
+        android:background="#ffffff"
         android:orientation="horizontal"
         android:weightSum="1">
 
 
         <ImageView
             android:id="@+id/button3"
+            android:layout_width="10dp"
             android:layout_height="316dp"
             android:layout_gravity="center"
             android:layout_weight=".50"
-            android:layout_width="10dp"
             android:clickable="true"
             android:onClick="onClickGuest"
             android:scaleType="centerCrop"
@@ -49,10 +52,10 @@
 
         <ImageView
             android:id="@+id/button2"
+            android:layout_width="10dp"
             android:layout_height="316dp"
             android:layout_gravity="center"
             android:layout_weight=".50"
-            android:layout_width="10dp"
             android:clickable="true"
             android:onClick="onClickHost"
             android:scaleType="centerCrop"

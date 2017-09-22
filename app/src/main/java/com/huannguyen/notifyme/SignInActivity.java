@@ -1,5 +1,7 @@
 package com.huannguyen.notifyme;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -123,7 +125,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 });
     }
 
-    @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d(TAG, "Connection Failed");
     }
