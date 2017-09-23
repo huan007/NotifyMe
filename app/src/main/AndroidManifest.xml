@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".HostMainActivity" />
-        <activity android:name=".GuestMainActivity"></activity>
+        <activity android:name=".GuestMainActivity" />
+        <activity android:name=".GetTicketActivity"></activity>
     </application>
 
 </manifest>

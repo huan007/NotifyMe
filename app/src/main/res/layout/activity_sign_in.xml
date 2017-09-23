@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0277BD"
+    android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="vertical"
     android:weightSum="1"
@@ -22,10 +22,10 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get started by signing in to Google"
+        android:text="@string/sign_in_des"
         android:textSize="12dp"
         android:textAlignment="center"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/white"
         android:layout_marginTop="200dp"/>
 
     <com.google.android.gms.common.SignInButton

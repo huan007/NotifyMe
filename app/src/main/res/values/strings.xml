@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">NotifyMe</string>
+    <string name="sign_in_des">Get started by signing in to Google</string>
+    <string name="regis_title">Almost done!</string>
+    <string name="regis_subtitle">We need to know if you are a...</string>
+    <string name="user_ticket_title">Your number is</string>
+    <string name="user_ticket_number">N/A</string>
+    <string name="user_ticket_id">N/A</string>
+    <string name="user_ticket_name">Store name: N/A</string>
+    <string name="user_ticket_loc">Store address: N/A</string>
+    <string name="user_ticket_current_number">Store current number: N/A</string>
 </resources>

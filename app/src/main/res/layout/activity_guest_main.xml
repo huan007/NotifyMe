@@ -1,9 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.huannguyen.notifyme.GuestMainActivity">
+    android:orientation="vertical"
+    tools:context="com.huannguyen.notifyme.GuestMainActivity"
+    android:weightSum="1">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="@string/user_ticket_title"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/WaitNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/user_ticket_number"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="110dp" />
+
+        <TextView
+            android:id="@+id/WaitID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/user_ticket_id"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.17"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Ticket description"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/user_ticket_name"
+        android:textSize="13dp"
+        android:layout_weight="0.14" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/user_ticket_loc"
+        android:textSize="13dp"
+        android:layout_weight="0.13" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.13"
+        android:gravity="center"
+        android:text="@string/user_ticket_current_number"
+        android:textSize="13dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="303dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.01"
+        android:clickable="true"
+        android:onClick="onClickTicket"
+        android:src="@drawable/buttonticket"
+        android:layout_marginTop="50dp"/>
+
+</LinearLayout>
