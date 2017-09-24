@@ -14,7 +14,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/regis_title"
+        android:text="Almost done!"
         android:textSize="50dp"
         android:textColor="@color/white"
         android:textAlignment="center"/>
@@ -23,7 +23,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/regis_subtitle"
+        android:text="We need to know if you are a..."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="15dp" />

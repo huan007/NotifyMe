@@ -22,7 +22,7 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in_des"
+        android:text="Get started by signing in to Google"
         android:textSize="12dp"
         android:textAlignment="center"
         android:textColor="@color/white"

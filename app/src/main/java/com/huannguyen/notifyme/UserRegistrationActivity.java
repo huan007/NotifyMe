@@ -34,7 +34,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
             User userProfile = userManager.retrieveUser(currUser.getUid());
             if (userProfile.getUserType() == UserType.HOST)
                 startHostActivity();
-            else
+            else if (userProfile.getUserType() == UserType.GUEST)
                 startGuestActivity();
         }
 
@@ -63,11 +63,15 @@ public class UserRegistrationActivity extends AppCompatActivity {
         Intent hostIntent = new Intent(this, HostMainActivity.class);
         hostIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(hostIntent);
+
+        finish();
     }
 
     public void startGuestActivity() {
         Intent guestIntent = new Intent(this, GuestMainActivity.class);
         guestIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(guestIntent);
+
+        finish();
     }
 }
