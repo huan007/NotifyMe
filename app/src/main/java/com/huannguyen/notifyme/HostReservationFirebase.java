@@ -5,8 +5,10 @@ package com.huannguyen.notifyme;
  */
 
 class HostReservationFirebase implements HostReservationInterface {
+
+    //For now, reservationID will be the reservation number given by the HOST
     @Override
-    public Reservation createReservation(String reservationID) {
+    public Reservation createReservation(String reservationID, Reservation newReservation) {
         return null;
     }
 

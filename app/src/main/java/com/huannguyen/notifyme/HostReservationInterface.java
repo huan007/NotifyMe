@@ -11,7 +11,7 @@ public interface HostReservationInterface {
      * @param reservationID unique ID for the reservation
      * @return created reservation. Return NULL if failed
      */
-    public Reservation createReservation(String reservationID);
+    public Reservation createReservation(String reservationID, Reservation newReservation);
 
     /**
      * Delete an existing reservation
