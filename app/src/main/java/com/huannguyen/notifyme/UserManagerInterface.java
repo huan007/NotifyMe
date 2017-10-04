@@ -32,16 +32,14 @@ public interface UserManagerInterface {
      * @param userType  HOST or GUEST
      * @param userName name of the user
      * @param userEmail email address of the user
-     * @param userID user ID
      * @param hostAddress (Only required for Host) address of host
      */
-    public void createUserSpace(UserType userType, String userName, String userEmail, String userID,
-                                String hostAddress);
+    public void createUserSpace(UserType userType, String userName, String userEmail, String hostAddress);
 
     /**
      * Retrieve the user space based on user's ID
      * @param userID user ID
      * @return UserSpace object, can either be Host or Guest Object which extends UserSpace
      */
-    public UserSpace retrieveUserSpace(String userID);
+    public UserSpace retrieveUserSpace(UserType userType, String userID);
 }
