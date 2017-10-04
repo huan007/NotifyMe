@@ -33,8 +33,9 @@ public interface UserManagerInterface {
      * @param userName name of the user
      * @param userEmail email address of the user
      * @param hostAddress (Only required for Host) address of host
+     * @return newly created user space
      */
-    public void createUserSpace(UserType userType, String userName, String userEmail, String hostAddress);
+    public UserSpace createUserSpace(UserType userType, String userName, String userEmail, String hostAddress);
 
     /**
      * Retrieve the user space based on user's ID
