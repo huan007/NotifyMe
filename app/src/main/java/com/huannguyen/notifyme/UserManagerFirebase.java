@@ -93,4 +93,57 @@ public class UserManagerFirebase implements UserManagerInterface {
         }
         return result[0];
     }
+
+    @Override
+    public UserSpace createUserSpace(UserType userType, String userName, String userEmail, String hostAddress) {
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        UserSpace newUserSpace = null;
+        if (userType == UserType.HOST)
+        {//Creating user space for Host Type
+            newUserSpace = new Host(userName, hostAddress, userEmail, userID);
+            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+
+            //Write new user space
+            rootRef.child("Host/" + userID).setValue(newUserSpace);
+        }
+
+        else
+        {//Creating user space for Guest Type
+
+        }
+        return newUserSpace;
+    }
+
+    @Override
+    public UserSpace retrieveUserSpace(final UserType userType, String userID) {
+        String dir;
+        if (userType == UserType.HOST)
+            dir = "Host/";
+        else
+            dir = "Guest/";
+        //Get root reference
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userSpaceRef = rootRef.child(dir + userID);
+
+        final UserSpace[] userSpaces = new UserSpace[1];
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (userType == UserType.HOST)
+                    userSpaces[0] = dataSnapshot.getValue(Host.class);
+                else
+                    userSpaces[0] = dataSnapshot.getValue(Guest.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d(TAG, databaseError.toString());
+            }
+        };
+
+
+        userSpaceRef.addListenerForSingleValueEvent(userListener);
+
+        return userSpaces[0];
+    }
 }

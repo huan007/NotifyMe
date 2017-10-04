@@ -35,7 +35,7 @@ public class FirebaseInstrumentTest {
     public void testRegisterUser()
     {
         //Try to sign in
-        onView(withId(R.id.signInButton)).perform(click());
+        //onView(withId(R.id.signInButton)).perform(click());
 
         //Get infos about user
         FirebaseUser currUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -57,5 +57,12 @@ public class FirebaseInstrumentTest {
         //Retrieve user and compare it with original user
         User retrievedUser = userManager.retrieveUser(userID);
         assertEquals(newUser, retrievedUser);
+
+        //Part 2: Test User Spaces
+        userManager.createUserSpace(UserType.HOST, userName, email, "123 Main Street");
+
+        UserSpace userSpace = userManager.retrieveUserSpace(UserType.HOST, userID);
+
+        System.out.println("Hello");
     }
 }
