@@ -5,28 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.huannguyen.notifyme.GetTicketActivity">
+    tools:context="com.huannguyen.notifyme.GetTicketActivity"
+    android:weightSum="1">
 
-    <fragment
-        android:id="@+id/search"
-        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.9">
+        <fragment
+            android:id="@+id/search"
+            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        tools:context="com.huannguyen.notifyme.MapFragment"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="268dp"
-        android:layout_height="34dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="-50dp"
-        android:clickable="true"
-        android:onClick="onClickFinish"
-        android:src="@drawable/buttonconfirm" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.1"
+        android:background="#0277bd"
+        android:weightSum="1">
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            tools:context="com.huannguyen.notifyme.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="0.9"
+            android:clickable="true"
+            android:onClick="onClickFinish"
+            android:src="@drawable/buttonconfirm"
+            android:scaleType="fitCenter"/>
+    </LinearLayout>
 </LinearLayout>

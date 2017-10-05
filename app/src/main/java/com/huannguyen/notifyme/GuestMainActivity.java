@@ -35,6 +35,11 @@ public class GuestMainActivity extends AppCompatActivity {
         storeName = (TextView) findViewById(R.id.storeName);
         storeAddr = (TextView) findViewById(R.id.storeAddr);
 
+        if (ticket.getStoreName() == null){
+            ticket.setStoreName("N/A");
+            ticket.setStoreAddress("N/A");
+        }
+
         storeName.setText("Store name: " + ticket.getStoreName());
         storeAddr.setText("Store address: " + ticket.getStoreAddress());
 
