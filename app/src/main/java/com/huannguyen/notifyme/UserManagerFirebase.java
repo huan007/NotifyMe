@@ -93,4 +93,14 @@ public class UserManagerFirebase implements UserManagerInterface {
         }
         return result[0];
     }
+
+    public void createUserSpace(UserType userType, String userName, String userEmail, String userID,
+                                String hostAddress){
+
+    }
+
+    public UserSpace retrieveUserSpace(String userID){
+        UserSpace user = new UserSpace();
+        return user;
+    }
 }
