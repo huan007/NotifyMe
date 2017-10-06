@@ -8,8 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.huannguyen.notifyme.SignInActivity"
-    android:screenOrientation="portrait">
+    tools:context="com.huannguyen.notifyme.SignInActivity">
 
     <ImageView
         android:id="@+id/imageView1"

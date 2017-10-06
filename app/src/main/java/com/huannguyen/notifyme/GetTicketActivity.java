@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,11 +34,15 @@ import static com.huannguyen.notifyme.GuestMainActivity.ticket;
 public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private static final int REQUEST_CAMERA = 1;
+    private String qrlink = null;
+    private UserManagerFirebase userManagerFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_ticket);
+
+        userManagerFirebase = new UserManagerFirebase();
 
         // Build the map.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -52,6 +57,8 @@ public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCa
             public void onPlaceSelected(Place place) {
                 ticket.setStoreName(place.getName().toString());
                 ticket.setStoreAddress(place.getAddress().toString());
+                ticket.setTicketNumber(5);
+                ticket.setTicketID("JAPOSEA0005");
 
                 mMap.addMarker(new MarkerOptions().position(place.getLatLng())
                         .title(place.getName().toString()));
@@ -87,12 +94,13 @@ public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCa
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent){
-
         ZxingOrientResult scanResult =
                 ZxingOrient.parseActivityResult(requestCode, resultCode, intent);
 
         if (scanResult != null) {
+            Log.d("TEST", "" + scanResult.getContents());
 
+            String[] result = scanResult.getContents().split("/");
         }
     }
 
@@ -150,6 +158,8 @@ public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCa
                 .setInfoBoxColor("#01579B")       // Sets Info box color
                 .setInfo("Scan a QR code Image")   // Sets info message in the info box
                 .showInfoBox(false)
+                .setVibration(false)
+                .setBeep(false)
                 .initiateScan(Barcode.QR_CODE);
     }
 }

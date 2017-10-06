@@ -2,7 +2,6 @@ package com.huannguyen.notifyme;
 
 import android.util.Log;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -71,7 +70,6 @@ public class UserManagerFirebase implements UserManagerInterface {
         final DatabaseReference userRef = rootRef.child("Users/" + userID);
 
         final boolean[] result = new boolean[1];
-
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -87,12 +85,10 @@ public class UserManagerFirebase implements UserManagerInterface {
             }
         });
 
-        synchronized (UserManagerFirebase.this) {
-            try {
-                sleep(7000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        try {
+            sleep(7000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
         return result[0];

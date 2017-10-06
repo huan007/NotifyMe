@@ -49,13 +49,19 @@ public class UserRegistrationActivity extends AppCompatActivity {
                         startGuestActivity();
                 } else {
                     Log.d(TAG, "User is Not Registered");
-                    loading.setVisibility(View.INVISIBLE);
-                    topLayout.setVisibility(View.VISIBLE);
-                    bottomLayout.setVisibility(View.VISIBLE);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            showRegistration();
+                        }
+                    });
                 }
             }
         });
         t.start();
+
+
     }
 
     public void onClickHost(View view)
@@ -89,5 +95,11 @@ public class UserRegistrationActivity extends AppCompatActivity {
         startActivity(guestIntent);
 
         finish();
+    }
+
+    public void showRegistration(){
+        loading.setVisibility(View.INVISIBLE);
+        topLayout.setVisibility(View.VISIBLE);
+        bottomLayout.setVisibility(View.VISIBLE);
     }
 }

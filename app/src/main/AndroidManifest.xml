@@ -22,17 +22,17 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_android_map_api_key" />
 
-        <activity android:name=".UserRegistrationActivity" />
-        <activity android:name=".SignInActivity">
+        <activity android:name=".UserRegistrationActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SignInActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HostMainActivity" />
-        <activity android:name=".GuestMainActivity" />
-        <activity android:name=".GetTicketActivity" />
+        <activity android:name=".HostMainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".GuestMainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".GetTicketActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
