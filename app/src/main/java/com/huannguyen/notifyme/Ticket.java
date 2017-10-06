@@ -8,18 +8,21 @@ package com.huannguyen.notifyme;
 class Ticket {
     private String storeName;
     private String storeAddress;
-    private int storeNumber;
+    private int ticketNumber;
+    private String ticketID;
 
     public Ticket(){
         storeName = null;
         storeAddress = null;
-        storeNumber = 0;
+        ticketNumber = 0;
+        ticketID = null;
     }
 
-    public Ticket(String storeName, String storeAddress, int storeNumber){
+    public Ticket(String storeName, String storeAddress, int ticketNumber, String ticketID){
         this.storeName = storeName;
         this.storeAddress = storeAddress;
-        this.storeNumber = storeNumber;
+        this.ticketNumber = ticketNumber;
+        this.ticketID = ticketID;
     }
 
     public String getStoreName(){
@@ -30,9 +33,11 @@ class Ticket {
         return storeAddress;
     }
 
-    public int getStoreNumber() {
-        return storeNumber;
+    public int getTicketNumber() {
+        return ticketNumber;
     }
+
+    public String getTicketID() {return ticketID;}
 
     public void setStoreName(String storeName){
         this.storeName = storeName;
@@ -42,7 +47,9 @@ class Ticket {
         this.storeAddress = storeAddress;
     }
 
-    public void setStoreNumber(int storeNumber){
-        this.storeNumber = storeNumber;
+    public void setTicketNumber(int ticketNumber){
+        this.ticketNumber = ticketNumber;
     }
+
+    public void setTicketID(String ticketID){this.ticketID = ticketID;}
 }

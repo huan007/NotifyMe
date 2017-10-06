@@ -68,16 +68,16 @@ public class UserManagerFirebase implements UserManagerInterface {
     public boolean checkUserExist(String userID) {
         //Delegate responsibility to retreiveUser. If null then user doesn't exist.
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userRef = rootRef.child("Users/" + userID);
+        final DatabaseReference userRef = rootRef.child("Users/" + userID);
 
         final boolean[] result = new boolean[1];
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
+                if (dataSnapshot.exists()) {
                     result[0] = true;
-                else
+                } else
                     result[0] = false;
             }
 
@@ -86,11 +86,15 @@ public class UserManagerFirebase implements UserManagerInterface {
                 Log.d(TAG, databaseError.toString());
             }
         });
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+        synchronized (UserManagerFirebase.this) {
+            try {
+                sleep(7000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+
         return result[0];
     }
 

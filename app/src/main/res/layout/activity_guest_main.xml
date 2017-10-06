@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.huannguyen.notifyme.GuestMainActivity"
+    android:screenOrientation="portrait"
     android:weightSum="1">
 
     <LinearLayout
