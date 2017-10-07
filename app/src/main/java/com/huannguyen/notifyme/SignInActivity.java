@@ -72,6 +72,9 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             Log.d(TAG, "Got cached sign-in");
             GoogleSignInResult result = opr.get();
             handleSignInResult(result);
+
+            Toast.makeText(SignInActivity.this.getBaseContext(),"Signed in with " + result.getSignInAccount().getEmail(),
+                    Toast.LENGTH_LONG).show();
         } else {
             // If the user has not previously signed in on this device or the sign-in has expired,
             // this asynchronous branch will attempt to sign in the user silently.  Cross-device

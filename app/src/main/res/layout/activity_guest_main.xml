@@ -10,29 +10,31 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="0sp"
         android:background="@color/colorPrimary"
-        android:orientation="vertical">
+        android:layout_weight="0.5"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:gravity="bottom"
+            android:layout_weight="0.6"
             android:text="Your ticket number is"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/WaitNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center_horizontal"
             android:text="N/A"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="110dp" />
+            android:textSize="110sp" />
 
         <TextView
             android:id="@+id/WaitID"
@@ -42,58 +44,73 @@
             android:text="N/A"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="13dp" />
+            android:textSize="13sp" />
+
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.17"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Ticket description"
-        android:textStyle="bold"
-        android:textSize="18dp" />
+        android:layout_height="0sp"
+        android:layout_weight="0.5"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-    <TextView
-        android:id="@+id/storeName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.14"
-        android:gravity="center"
-        android:text="Store name: N/A"
-        android:textSize="13dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    <TextView
-        android:id="@+id/storeAddr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.13"
-        android:gravity="center"
-        android:text="Store address: N/A"
-        android:textSize="13dp" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:text="Ticket description"
+                android:textSize="19sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/storeCurrNum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.13"
-        android:gravity="center"
-        android:text="Store current number: N/A"
-        android:textSize="13dp" />
+            <TextView
+                android:id="@+id/storeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:text="Store name: N/A"
+                android:textSize="14sp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="268dp"
-        android:layout_height="34dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:clickable="true"
-        android:onClick="onClickTicket"
-        android:src="@drawable/buttonticket" />
+            <TextView
+                android:id="@+id/storeAddr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:text="Store address: N/A"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/storeCurrNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:text="Store current number: N/A"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="0sp"
+            android:layout_gravity="center"
+            android:layout_weight="0.14"
+            android:clickable="true"
+            android:onClick="onClickTicket"
+            android:src="@drawable/buttonticket"
+            android:scaleType="fitCenter"/>
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,7 +1,5 @@
 package com.huannguyen.notifyme;
 
-import java.io.Serializable;
-
 /**
  * Created by BaSiDin on 9/22/2017.
  * Represent a single ticket in the app. Contains ticket's information
@@ -10,18 +8,21 @@ import java.io.Serializable;
 class Ticket {
     private String storeName;
     private String storeAddress;
-    private int currentNumber;
+    private int ticketNumber;
+    private String ticketID;
 
     public Ticket(){
         storeName = null;
         storeAddress = null;
-        currentNumber = 0;
+        ticketNumber = 0;
+        ticketID = null;
     }
 
-    public Ticket(String storeName, String storeAddress, int currentNumber){
+    public Ticket(String storeName, String storeAddress, int ticketNumber, String ticketID){
         this.storeName = storeName;
         this.storeAddress = storeAddress;
-        this.currentNumber = currentNumber;
+        this.ticketNumber = ticketNumber;
+        this.ticketID = ticketID;
     }
 
     public String getStoreName(){
@@ -32,9 +33,11 @@ class Ticket {
         return storeAddress;
     }
 
-    public int getCurrentNumber() {
-        return currentNumber;
+    public int getTicketNumber() {
+        return ticketNumber;
     }
+
+    public String getTicketID() {return ticketID;}
 
     public void setStoreName(String storeName){
         this.storeName = storeName;
@@ -44,7 +47,9 @@ class Ticket {
         this.storeAddress = storeAddress;
     }
 
-    public void setCurrentNumber(int currentNumber){
-        this.currentNumber = currentNumber;
+    public void setTicketNumber(int ticketNumber){
+        this.ticketNumber = ticketNumber;
     }
+
+    public void setTicketID(String ticketID){this.ticketID = ticketID;}
 }
