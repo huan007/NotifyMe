@@ -5,5 +5,5 @@ package com.huannguyen.notifyme;
  */
 
 public interface FirebaseRetrievalInterface {
-    
+    public void onRetrieval(Object result);
 }

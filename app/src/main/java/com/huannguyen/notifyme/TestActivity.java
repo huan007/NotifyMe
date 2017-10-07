@@ -40,6 +40,21 @@ public class TestActivity extends AppCompatActivity {
         String email = currUser.getEmail();
         String userID = currUser.getUid();
 
-        retrieved = userManager.retrieveUserSpace(UserType.HOST, userID);
+        retrieved = userManager.retrieveUserSpace(UserType.HOST, userID, new FirebaseRetrievalInterface() {
+            @Override
+            public void onRetrieval(Object result) {
+                handleRetrieve(result);
+            }
+        });
+
+    }
+
+    public void handleRetrieve(Object result){
+        if (result instanceof Host)
+        {
+            //Parse the result
+            retrieved = (Host) result;
+
+        }
     }
 }
