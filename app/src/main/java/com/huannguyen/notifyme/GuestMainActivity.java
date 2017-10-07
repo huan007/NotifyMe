@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class GuestMainActivity extends AppCompatActivity {
     public static Ticket ticket = new Ticket();
+    private TextView waitNumber;
+    private TextView waitID;
     private TextView storeName;
     private TextView storeAddr;
 
@@ -34,14 +36,20 @@ public class GuestMainActivity extends AppCompatActivity {
 
         storeName = (TextView) findViewById(R.id.storeName);
         storeAddr = (TextView) findViewById(R.id.storeAddr);
+        waitNumber = (TextView) findViewById(R.id.WaitNumber);
+        waitID = (TextView) findViewById(R.id.WaitID);
 
         if (ticket.getStoreName() == null){
             ticket.setStoreName("N/A");
             ticket.setStoreAddress("N/A");
+            ticket.setTicketNumber(0);
+            ticket.setTicketID("N/A");
         }
 
         storeName.setText("Store name: " + ticket.getStoreName());
         storeAddr.setText("Store address: " + ticket.getStoreAddress());
+        waitNumber.setText(String.valueOf(ticket.getTicketNumber()));
+        waitID.setText(ticket.getTicketID());
 
     }
 

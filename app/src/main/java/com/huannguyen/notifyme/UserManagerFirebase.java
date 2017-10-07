@@ -32,7 +32,7 @@ public class UserManagerFirebase implements UserManagerInterface {
     }
 
     @Override
-    public User retrieveUser(String userID) {
+    public User retrieveUser(String userID, final FirebaseRetrievalInterface retrievalInterface) {
         //Get root reference
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef = rootRef.child("Users/" + userID);
@@ -41,7 +41,7 @@ public class UserManagerFirebase implements UserManagerInterface {
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                user[0] = dataSnapshot.getValue(User.class);
+                retrievalInterface.onRetrieval(dataSnapshot.getValue(User.class));
             }
 
             @Override
@@ -53,30 +53,23 @@ public class UserManagerFirebase implements UserManagerInterface {
 
         userRef.addListenerForSingleValueEvent(userListener);
 
-        /*Here I used while loop to wait until value is retrieved. Possibly infinite loop
-         *if there are no internet connection*/
-        try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return user[0];
     }
 
     @Override
-    public boolean checkUserExist(String userID) {
+    public boolean checkUserExist(String userID, final FirebaseRetrievalInterface retrievalInterface) {
         //Delegate responsibility to retreiveUser. If null then user doesn't exist.
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        final DatabaseReference userRef = rootRef.child("Users/" + userID);
+        DatabaseReference userRef = rootRef.child("Users/" + userID);
 
         final boolean[] result = new boolean[1];
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    result[0] = true;
+                    retrievalInterface.onRetrieval(Boolean.TRUE);
                 } else
-                    result[0] = false;
+                    retrievalInterface.onRetrieval(Boolean.FALSE);
             }
 
             @Override
@@ -84,12 +77,6 @@ public class UserManagerFirebase implements UserManagerInterface {
                 Log.d(TAG, databaseError.toString());
             }
         });
-
-        try {
-            sleep(7000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         return result[0];
     }
@@ -146,5 +133,35 @@ public class UserManagerFirebase implements UserManagerInterface {
         userSpaceRef.addListenerForSingleValueEvent(userListener);
 
         return userSpaces[0];
+    }
+
+    public boolean checkHostExistGMap(final String addressWithoutCommas, final FirebaseRetrievalInterface retrievalInterface){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef = rootRef.child("Host");
+
+        final boolean[] result = new boolean[2];
+
+        result[1] = false;
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    if (addressWithoutCommas.equals(snapshot.child("hostAddress").getValue().toString().trim().replaceAll(",","")))
+                    retrievalInterface.onRetrieval(Boolean.TRUE);
+                    result[1] = true;
+                }
+
+                if (result[1] == false){
+                    retrievalInterface.onRetrieval(Boolean.FALSE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d(TAG, databaseError.toString());
+            }
+        });
+
+        return result[0];
     }
 }

@@ -18,14 +18,14 @@ public interface UserManagerInterface {
      * @param userID user's ID from Google Sign In
      * @return User object that contains the users's information
      */
-    public User retrieveUser(String userID);
+    public User retrieveUser(String userID, FirebaseRetrievalInterface retrievalInterface);
 
     /**
      * Check whether the user already exist in the database.
      * @param userID user's ID from Google Sign In
      * @return TRUE if the user is already exist
      */
-    public boolean checkUserExist(String userID);
+    public boolean checkUserExist(String userID, FirebaseRetrievalInterface retrievalInterface);
 
     /**
      * Create a user space based on whether the user is a HOST or GUEST
@@ -44,4 +44,6 @@ public interface UserManagerInterface {
      */
     public UserSpace retrieveUserSpace(UserType userType, String userID, FirebaseRetrievalInterface
             retrievalInterface);
+
+    public boolean checkHostExistGMap(String address, FirebaseRetrievalInterface retrievalInterface);
 }

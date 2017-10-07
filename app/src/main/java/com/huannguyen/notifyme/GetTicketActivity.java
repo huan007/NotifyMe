@@ -35,14 +35,15 @@ public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCa
     private GoogleMap mMap;
     private static final int REQUEST_CAMERA = 1;
     private String qrlink = null;
-    private UserManagerFirebase userManagerFirebase;
+    private boolean isPlaceHaveService;
+    public static UserManagerFirebase userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_ticket);
 
-        userManagerFirebase = new UserManagerFirebase();
+        userManager = new UserManagerFirebase();
 
         // Build the map.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -54,15 +55,14 @@ public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCa
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
-            public void onPlaceSelected(Place place) {
-                ticket.setStoreName(place.getName().toString());
-                ticket.setStoreAddress(place.getAddress().toString());
-                ticket.setTicketNumber(5);
-                ticket.setTicketID("JAPOSEA0005");
+            public void onPlaceSelected(final Place place) {
+                isPlaceHaveService = userManager.checkHostExistGMap(place.getAddress().toString().replaceAll(",", ""), new FirebaseRetrievalInterface() {
+                    @Override
+                    public void onRetrieval(Object result) {
+                        handleRetrieve(place, result);
+                    }
+                });
 
-                mMap.addMarker(new MarkerOptions().position(place.getLatLng())
-                        .title(place.getName().toString()));
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(),15));
             }
 
             @Override
@@ -101,6 +101,10 @@ public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCa
             Log.d("TEST", "" + scanResult.getContents());
 
             String[] result = scanResult.getContents().split("/");
+
+            for (int i = 0; i < result.length; i++){
+                Log.d("TEST3", "" + result[i]);
+            }
         }
     }
 
@@ -161,5 +165,23 @@ public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCa
                 .setVibration(false)
                 .setBeep(false)
                 .initiateScan(Barcode.QR_CODE);
+    }
+
+    public void handleRetrieve(Place place, Object result){
+        isPlaceHaveService = (Boolean) result;
+
+        if (isPlaceHaveService == true){
+            ticket.setStoreName(place.getName().toString());
+            ticket.setStoreAddress(place.getAddress().toString());
+            ticket.setTicketNumber(5);
+            ticket.setTicketID("JAPOSEA0005");
+
+            mMap.addMarker(new MarkerOptions().position(place.getLatLng())
+                    .title(place.getName().toString()));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(),15));
+        } else {
+            Toast.makeText(GetTicketActivity.this.getBaseContext(),"Sorry but the service is not available at this store",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -15,6 +15,8 @@ public class UserRegistrationActivity extends AppCompatActivity {
     private static final String TAG = "RegistrationActivity";
     private static FirebaseUser currUser;
     private static UserManagerInterface userManager;
+    private boolean userExist;
+    private User userProfile;
     ProgressBar loading;
     LinearLayout topLayout;
     LinearLayout bottomLayout;
@@ -36,32 +38,12 @@ public class UserRegistrationActivity extends AppCompatActivity {
         //Log.d(TAG, "UID: " + currUser.getUid());
 
         //Skip Activity when the user is already exist
-        Thread t = new Thread(new Runnable() {
+        userExist = userManager.checkUserExist(currUser.getUid(), new FirebaseRetrievalInterface() {
             @Override
-            public void run() {
-                if (userManager.checkUserExist(currUser.getUid()) == true)
-                {
-                    Log.d(TAG, "User is Already Registered!");
-                    User userProfile = userManager.retrieveUser(currUser.getUid());
-                    if (userProfile.getUserType() == UserType.HOST)
-                        startHostActivity();
-                    else if (userProfile.getUserType() == UserType.GUEST)
-                        startGuestActivity();
-                } else {
-                    Log.d(TAG, "User is Not Registered");
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            showRegistration();
-                        }
-                    });
-                }
+            public void onRetrieval(Object result) {
+                handleRetrieve(result);
             }
         });
-        t.start();
-
-
     }
 
     public void onClickHost(View view)
@@ -101,5 +83,32 @@ public class UserRegistrationActivity extends AppCompatActivity {
         loading.setVisibility(View.INVISIBLE);
         topLayout.setVisibility(View.VISIBLE);
         bottomLayout.setVisibility(View.VISIBLE);
+    }
+
+    public void handleRetrieve(Object result){
+        userExist = (Boolean) result;
+
+        if (userExist == true)
+        {
+            Log.d(TAG, "User is Already Registered!");
+            userProfile = userManager.retrieveUser(currUser.getUid(), new FirebaseRetrievalInterface() {
+                @Override
+                public void onRetrieval(Object result) {
+                    handleRetrieve2(result);
+                }
+            });
+        } else {
+            Log.d(TAG, "User is Not Registered");
+            showRegistration();
+        }
+    }
+
+    public void handleRetrieve2(Object result){
+        userProfile = (User) result;
+
+        if (userProfile.getUserType() == UserType.HOST)
+            startHostActivity();
+        else if (userProfile.getUserType() == UserType.GUEST)
+            startGuestActivity();
     }
 }
