@@ -115,7 +115,8 @@ public class UserManagerFirebase implements UserManagerInterface {
     }
 
     @Override
-    public UserSpace retrieveUserSpace(final UserType userType, String userID) {
+    public UserSpace retrieveUserSpace(final UserType userType, String userID,
+                                       final FirebaseRetrievalInterface retrievalInterface) {
         String dir;
         if (userType == UserType.HOST)
             dir = "Host/";
@@ -130,9 +131,9 @@ public class UserManagerFirebase implements UserManagerInterface {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (userType == UserType.HOST)
-                    userSpaces[0] = dataSnapshot.getValue(Host.class);
+                    retrievalInterface.onRetrieval(dataSnapshot.getValue(Host.class));
                 else
-                    userSpaces[0] = dataSnapshot.getValue(Guest.class);
+                    retrievalInterface.onRetrieval(dataSnapshot.getValue(Guest.class));
             }
 
             @Override

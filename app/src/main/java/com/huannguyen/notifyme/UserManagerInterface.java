@@ -42,5 +42,6 @@ public interface UserManagerInterface {
      * @param userID user ID
      * @return UserSpace object, can either be Host or Guest Object which extends UserSpace
      */
-    public UserSpace retrieveUserSpace(UserType userType, String userID);
+    public UserSpace retrieveUserSpace(UserType userType, String userID, FirebaseRetrievalInterface
+            retrievalInterface);
 }
