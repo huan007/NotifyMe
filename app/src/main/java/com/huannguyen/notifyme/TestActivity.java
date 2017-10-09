@@ -7,6 +7,11 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
+ */
+
 public class TestActivity extends AppCompatActivity {
     HostReservationInterface hostReserve;
     UserManagerInterface userManager;
@@ -39,6 +44,7 @@ public class TestActivity extends AppCompatActivity {
         String userName = currUser.getDisplayName();
         String email = currUser.getEmail();
         String userID = currUser.getUid();
+
 
         retrieved = userManager.retrieveUserSpace(UserType.HOST, userID, new FirebaseRetrievalInterface() {
             @Override

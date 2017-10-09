@@ -1,7 +1,8 @@
 package com.huannguyen.notifyme;
 
 /**
- * Created by Huan Nguyen on 10/3/2017.
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
  */
 
 public class Guest extends UserSpace {

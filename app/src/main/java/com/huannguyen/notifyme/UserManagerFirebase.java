@@ -12,7 +12,8 @@ import com.google.firebase.database.ValueEventListener;
 import static java.lang.Thread.sleep;
 
 /**
- * Created by Huan Nguyen on 8/28/2017.
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
  */
 
 public class UserManagerFirebase implements UserManagerInterface {

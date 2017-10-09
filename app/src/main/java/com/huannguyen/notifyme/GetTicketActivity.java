@@ -29,7 +29,10 @@ import me.sudar.zxingorient.ZxingOrientResult;
 import static android.Manifest.permission.CAMERA;
 import static com.huannguyen.notifyme.GuestMainActivity.ticket;
 
-
+/**
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
+ */
 
 public class GetTicketActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;

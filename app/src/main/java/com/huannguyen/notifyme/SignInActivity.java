@@ -30,6 +30,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+/**
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
+ */
+
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     SignInButton signInButton;

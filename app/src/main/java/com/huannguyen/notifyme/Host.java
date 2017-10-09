@@ -7,7 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Huan Nguyen on 10/2/2017.
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
  */
 
 class Host extends UserSpace implements HostReservationInterface{

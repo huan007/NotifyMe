@@ -1,7 +1,9 @@
 package com.huannguyen.notifyme;
 
 /**
- * Created by BaSiDin on 9/22/2017.
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
+ *
  * Represent a single ticket in the app. Contains ticket's information
  */
 

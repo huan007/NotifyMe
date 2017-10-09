@@ -1,7 +1,9 @@
 package com.huannguyen.notifyme;
 
 /**
- * Created by Huan Nguyen on 8/6/2017.
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
+ *
  * This Interface is meant to be a guideline for further developments. I am using the Strategy pattern.
  */
 

@@ -11,6 +11,11 @@ import android.widget.ProgressBar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
+ */
+
 public class UserRegistrationActivity extends AppCompatActivity {
     private static final String TAG = "RegistrationActivity";
     private static FirebaseUser currUser;

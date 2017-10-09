@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * Author:  Huan Nguyen (cyraxnguyen & huan007)
+ *          Anh Khoa Nguyen Vu (leScepter & akhoa.nv)
+ */
+
 public class GuestMainActivity extends AppCompatActivity {
     public static Ticket ticket = new Ticket();
     private TextView waitNumber;
